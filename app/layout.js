@@ -1,7 +1,12 @@
-import { Inter } from 'next/font/google'
+import { Days_One } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const days_one = Days_One({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-days-one',
+  weight: "400"
+})
 
 export const metadata = {
   title: 'Create Next App',
@@ -11,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={days_one.className}>{children}</body>
     </html>
   )
 }
