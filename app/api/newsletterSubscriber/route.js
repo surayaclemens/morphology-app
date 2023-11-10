@@ -16,7 +16,7 @@ export async function POST(req){
          await newEntry.save();
  
          return NextResponse.json({
-             msg: ["Email submitted"],
+             msg: ["Email submitted!"],
              success: true,
          });
 
@@ -29,7 +29,7 @@ export async function POST(req){
             // Handle other errors
             console.error("Error submitting email:", error);
             return NextResponse.json({
-                msg: "Unable to submit user email for the newsletter",
+                msg: "Something went wrong :( Please try again later",
             });
         }
     }

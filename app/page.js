@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 function HomePage() {
 
   const [userEmail, setEmail] = useState('');
-  const [error, setError] = useState([]);
+  const [message, setMessage] = useState([]);
 
   let handleNewsletterSubmit = async () => {
     console.log(userEmail)
@@ -21,8 +21,8 @@ function HomePage() {
     });
 
     const { msg } = await res.json();
-    setError(msg);
-    console.log(error)
+    setMessage(msg);
+    console.log(message)
   }
 
   return (
@@ -51,15 +51,15 @@ function HomePage() {
         {/* EXAMPLE CARDS */}
         <div className='flex flex-col justify-center items-center space-y-8'>
           <h2 className='text-white text-3xl'>For example...</h2>
-          <Image alt='reading illustration' src='/reading-girl.svg' width='250' height='250'/>
+          <Image alt='reading illustration' src='/reading-girl.svg' width='250' height='200'/>
           <div className='bg-midnight rounded-lg p-4 text-center text-white'>
             <p>Saffia was raised in Vancouver speaking English in her day-to-day life, and learning some French at school; the two “official languages” of Canada.</p>
           </div>
-          <Image alt='mosque illustration' src='/mosque.svg' width='250' height='250'/>
+          <Image alt='mosque illustration' src='/mosque.svg' width='250' height='200'/>
           <div className='bg-midnight rounded-lg p-4 text-center text-white'>
             <p> But she always heard her grandparents and other relatives speaking Kutchi in their home and at the local mosque.</p>
           </div>
-          <Image alt='family illustration' src='/grandma-girl.svg' width='250' height='250'/>
+          <Image alt='family illustration' src='/grandma-girl.svg' width='250' height='200'/>
           <div className='bg-midnight rounded-lg p-4 text-center text-white'>
             <p>She doesn’t speak or understand Kutchi herself, but is familiar with and connected to it through her relatives and their shared heritage.</p>
           </div>
@@ -89,8 +89,8 @@ function HomePage() {
         <p className='text-midnight text-lg'>Drop your email below :)</p>
         <input className='rounded-md px-6 py-2 text-midnight' placeholder='youremail@address.com' onChange={(e) => setEmail(e.target.value)} />
         <button className='bg-salmon rounded-lg text-white text-2xl px-6 py-4' onClick={() => handleNewsletterSubmit()}>Join the waitlist</button>
-        <p className='text-white text-xs m-8'>Learn Morphology 2023 All rights reserved</p> 
-        <h2>{error}</h2>
+        <h2>{message}</h2>
+        <p className='text-white text-xs m-8'>© Learn Morphology 2023 All rights reserved</p> 
       </section>
     </div>
   )
