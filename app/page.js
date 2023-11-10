@@ -1,113 +1,100 @@
-import Image from 'next/image'
+'use client'
+import Image from 'next/image';
+import React, { useState } from 'react';
 
-export default function Home() {
+function HomePage() {
+
+  const [userEmail, setEmail] = useState('');
+  const [message, setMessage] = useState([]);
+
+  let handleNewsletterSubmit = async () => {
+    console.log(userEmail)
+
+    const res = await fetch('api/newsletterSubscriber', {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+        userEmail
+      })
+    });
+
+    const { msg } = await res.json();
+    setMessage(msg);
+    console.log(message)
+  }
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div>
+      {/* SECTION WITH GRADIENT BG */}
+      <section className='bg-gradient-to-b from-lilac to-white px-8 py-16 space-y-16'>
+      {/* HERO */}
+        <div className='flex flex-col justify-center items-center space-y-4'>
+          <Image alt='Morphology' src='/wordmark-white.png' width='380' height='200'/>
+          <h3 className='text-white text-center text-xl'>is a fun and easy way to learn your heritage language!</h3>
+          <Image alt='tetris blocks' src='/tetris-mobile.svg' width='300' height='300'/>
         </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        {/* QUESTION GIRL */}
+        <div className='flex flex-col justify-center items-center space-y-8'>
+          <h2 className='text-midnight text-center text-3xl'>Okay, so what's a heritage language?</h2>
+          <Image alt='question mark illustration' src='/question-girl.svg' width='200' height='200'/>
+          <div className='bg-lilac rounded-lg p-4 text-center'>
+            <p className='text-white'>A heritage language is a language that is not the dominant one in a given social context, but is familiar to an individual, family, or community.</p>
+          </div>
+        </div>
+      </section>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      {/* SECTION WITH PURPLE BG */}
+      <section className='bg-lilac px-8 py-16'>
+        {/* EXAMPLE CARDS */}
+        <div className='flex flex-col justify-center items-center space-y-8'>
+          <h2 className='text-white text-3xl'>For example...</h2>
+          <Image alt='reading illustration' src='/reading-girl.svg' width='250' height='200'/>
+          <div className='bg-midnight rounded-lg p-4 text-center text-white'>
+            <p>Saffia was raised in Vancouver speaking English in her day-to-day life, and learning some French at school; the two “official languages” of Canada.</p>
+          </div>
+          <Image alt='mosque illustration' src='/mosque.svg' width='250' height='200'/>
+          <div className='bg-midnight rounded-lg p-4 text-center text-white'>
+            <p> But she always heard her grandparents and other relatives speaking Kutchi in their home and at the local mosque.</p>
+          </div>
+          <Image alt='family illustration' src='/grandma-girl.svg' width='250' height='200'/>
+          <div className='bg-midnight rounded-lg p-4 text-center text-white'>
+            <p>She doesn’t speak or understand Kutchi herself, but is familiar with and connected to it through her relatives and their shared heritage.</p>
+          </div>
+        </div>
+      </section>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+      {/* SECTION WITH WHITE BG */}
+      <section className='bg-white px-8 py-16'>
+        {/* BULLET POINTS */}
+        <div className='text-midnight flex flex-col justify-center items-center text-center space-y-4'>
+          <h2 className='text-midnight text-3xl'>Heritage languages are vital to identity, culture, and belonging.</h2>
+          <Image alt='flower illustration' src='/flower-pink.svg' width='50' height='50'/>
+          <p className='text-lg'>They help us as individuals understand and make meaning of the connections between ourselves and society - in the past, the present and the future.</p>
+          <Image alt='flower illustration' src='/flower-yellow.svg' width='50' height='50'/>
+          <p className='text-lg'>They enrich our shared communities with great varieties of sound, conversation, written works, art, and expression of unique concepts and emotions.</p>
+          <Image alt='flower illustration' src='/flower-green.svg' width='50' height='50'/>
+          <p className='text-lg'>They are a means of feeling safe, connected, and a part of something larger than ourselves.</p>
+        </div>
+      </section>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel. I added this line
-          </p>
-        </a>
-      </div>
-    </main>
+      {/* SECTION WITH PURPLE BG */}
+      <section className='bg-lilac flex flex-col justify-center items-center text-center px-8 py-16 space-y-4'>
+        <h2 className='text-white text-3xl'>Ready to learn?</h2>
+        <p className='text-midnight text-lg'>We love to hear it.</p>
+        <p className='text-midnight text-lg'>We’ve got a great app under development, but you can’t play juust yet. We’d be glad to let you know when you can!</p>
+        <p className='text-midnight text-lg'>Drop your email below :)</p>
+        <input className='rounded-md px-6 py-2 text-midnight' placeholder='youremail@address.com' onChange={(e) => setEmail(e.target.value)} />
+        <button className='bg-salmon rounded-lg text-white text-2xl px-6 py-4' onClick={() => handleNewsletterSubmit()}>Join the waitlist</button>
+        <h2>{message}</h2>
+        <p className='text-white text-xs m-8'>© Learn Morphology 2023 All rights reserved</p> 
+      </section>
+    </div>
   )
 }
+
+export default HomePage;
+
