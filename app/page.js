@@ -5,9 +5,24 @@ import React, { useState } from 'react';
 function HomePage() {
 
   const [userEmail, setEmail] = useState('');
+  const [error, setError] = useState([]);
 
-  let handleNewsletter = () => {
+  let handleNewsletterSubmit = async () => {
     console.log(userEmail)
+
+    const res = await fetch('api/newsletterSubscriber', {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+        userEmail
+      })
+    });
+
+    const { msg } = await res.json();
+    setError(msg);
+    console.log(error)
   }
 
   return (
@@ -69,16 +84,17 @@ function HomePage() {
       {/* SECTION WITH PURPLE BG */}
       <section className='bg-lilac flex flex-col justify-center items-center text-center px-8 py-16 space-y-4'>
         <h2 className='text-white text-3xl'>Ready to learn?</h2>
-        <p className='text-midnight text-lg'>We love to hear it</p>
+        <p className='text-midnight text-lg'>We love to hear it.</p>
         <p className='text-midnight text-lg'>We’ve got a great app under development, but you can’t play juust yet. We’d be glad to let you know when you can!</p>
         <p className='text-midnight text-lg'>Drop your email below :)</p>
         <input className='rounded-md px-6 py-2 text-midnight' placeholder='youremail@address.com' onChange={(e) => setEmail(e.target.value)} />
-        <button className='bg-salmon rounded-lg text-white text-2xl px-6 py-4' onClick={() => handleNewsletter()}>Join the waitlist</button>
+        <button className='bg-salmon rounded-lg text-white text-2xl px-6 py-4' onClick={() => handleNewsletterSubmit()}>Join the waitlist</button>
         <p className='text-white text-xs m-8'>Learn Morphology 2023 All rights reserved</p> 
+        <h2>{error}</h2>
       </section>
-
     </div>
   )
 }
 
 export default HomePage;
+
