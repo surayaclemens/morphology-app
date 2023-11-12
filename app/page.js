@@ -111,6 +111,8 @@ function HomePage() {
         <p className='text-midnight text-lg lg:text-xl'>Drop your email below :)</p>
         <input className='rounded-md px-6 py-2 text-midnight' placeholder='youremail@address.com' onChange={(e) => setEmail(e.target.value)} />
         <button className='bg-salmon rounded-lg text-white text-2xl px-6 py-4' onClick={() => handleNewsletterSubmit()}>Join the waitlist</button>
+        {/* sendgrid form */}
+        {/* <iframe src="https://cdn.forms-content-1.sg-form.com/796f5b51-8186-11ee-9d1a-7a1526b374d2"/> */}
         <h2 className='text-midnight'>{message}</h2>
         <p className='text-white text-xs m-8'>© Learn Morphology 2023 All rights reserved</p> 
       </section>

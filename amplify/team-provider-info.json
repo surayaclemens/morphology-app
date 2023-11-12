@@ -1,0 +1,32 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-morphologyapp-dev-102805-authRole",
+      "UnauthRoleArn": "arn:aws:iam::586924878381:role/amplify-morphologyapp-dev-102805-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::586924878381:role/amplify-morphologyapp-dev-102805-authRole",
+      "Region": "ca-central-1",
+      "DeploymentBucketName": "amplify-morphologyapp-dev-102805-deployment",
+      "UnauthRoleName": "amplify-morphologyapp-dev-102805-unauthRole",
+      "StackName": "amplify-morphologyapp-dev-102805",
+      "StackId": "arn:aws:cloudformation:ca-central-1:586924878381:stack/amplify-morphologyapp-dev-102805/3a10db70-8189-11ee-bf23-0e529d418748",
+      "AmplifyAppId": "d3vdg39mljteo"
+    },
+    "categories": {
+      "function": {
+        "morphologyapp66671452": {
+          "deploymentBucketName": "amplify-morphologyapp-dev-102805-deployment",
+          "s3Key": "amplify-builds/morphologyapp66671452-53684362634f65336b4a-build.zip"
+        }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d3vdg39mljteo",
+          "type": "cicd"
+        }
+      },
+      "api": {
+        "morphologymongoapi": {}
+      }
+    }
+  }
+}
