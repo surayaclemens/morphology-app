@@ -123,7 +123,6 @@ function HomePage() {
           <button className='bg-salmon rounded-lg text-white text-2xl px-6 py-4' onClick={() => handleNewsletterSubmit()}>Join the waitlist</button>
           <h2 className='text-midnight'>{message}</h2>
         </div>
-
         <p className='text-white text-xs pt-8'>© Learn Morphology 2023 All rights reserved</p> 
       </section>
     </div>
