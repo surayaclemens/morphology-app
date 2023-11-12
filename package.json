@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-amplify/cli": "^12.8.2",
     "mongodb": "^6.2.0",
     "mongoose": "^8.0.0",
     "next": "14.0.2",
