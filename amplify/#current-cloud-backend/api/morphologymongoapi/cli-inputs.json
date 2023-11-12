@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/": {
+      "name": "/",
+      "lambdaFunction": "morphologyapp66671452",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
