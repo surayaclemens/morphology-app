@@ -114,7 +114,7 @@ function HomePage() {
         <h2 className='text-white text-3xl lg:text-5xl'>Ready to learn?</h2>
         <div className='w-full py-6 flex flex-col justify-center items-center space-y-4'>
           <p className='text-midnight text-lg lg:text-xl'>We love to hear it.</p>
-          <p className='text-midnight text-lg lg:text-xl md:w-2/3'>The app is under development, so you can't play it juust yet.</p>
+          <p className='text-midnight text-lg lg:text-xl md:w-2/3'>The app is under development, so you can&apos;t play it juust yet.</p>
           <p className='text-midnight text-lg lg:text-xl md:w-2/3'>But we’d be glad to let you know when you can!</p>
           <p className='text-midnight text-lg lg:text-xl'>Drop your email below :)</p>
         </div>
